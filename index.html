@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SyberKoch | AI, Cloud & Leadership Consulting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="SyberKoch helps executives, entrepreneurs, and organizations with AI, cloud, leadership coaching, developer enablement, and modernization."
+  />
+  <style>
+    :root {
+      --primary: #0b5fff;
+      --primary-dark: #063a9c;
+      --accent: #00c2a8;
+      --bg: #f5f7fb;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --max-width: 1100px;
+      --radius: 10px;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+      background: radial-gradient(circle at top left, #e0ebff, #f5f7fb);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.4rem;
+      border-radius: 999px;
+      background: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+      transition: background 0.2s ease, transform 0.1s ease,
+        box-shadow 0.1s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid #cbd5f5;
+      color: var(--primary-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover {
+      background: #e5edff;
+      border-color: var(--primary);
+    }
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw + 1.4rem, 3rem);
+      font-weight: 800;
+      color: #020617;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: #e5edff;
+      color: #1d3a8a;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .badge-icon {
+      font-size: 0.9rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #e5e7eb;
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-list span {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-top: 0.1rem;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #020617;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 26rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .about-highlight {
+      background: #0b5fff0d;
+      border-left: 3px solid var(--primary);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #1e293b;
+    }
+
+    .about-meta {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .about-meta h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .about-meta ul {
+      list-style: none;
+    }
+
+    .about-meta li {
+      margin-bottom: 0.35rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #f1f5f9;
+      font-size: 0.8rem;
+      color: #475569;
+      margin-right: 0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .pill span {
+      font-size: 0.7rem;
+      color: var(--accent);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.3rem 1.4rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: #e5edff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .service-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #020617;
+    }
+
+    .service-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .service-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-list span {
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-top: 0.1rem;
+    }
+
+    .service-footer {
+      margin-top: auto;
+      font-size: 0.8rem;
+      color: #64748b;
+      padding-top: 0.4rem;
+      border-top: 1px dashed #e5e7eb;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .list-checks {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list-checks li {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .list-checks span {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-top: 0.1rem;
+    }
+
+    .panel {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .panel h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #0b5fff, #00c2a8);
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      color: var(--white);
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+    }
+
+    .cta h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin-bottom: 0.9rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .cta .btn-primary {
+      background: var(--white);
+      color: #0b5fff;
+      box-shadow: none;
+    }
+
+    .cta .btn-primary:hover {
+      background: #e5edff;
+      box-shadow: none;
+    }
+
+    .cta-meta {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .cta-meta strong {
+      font-weight: 700;
+    }
+
+    .contact {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .contact-info p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-list a {
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.3rem 1.4rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .contact-form h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .field {
+      margin-bottom: 0.7rem;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4b5563;
+      margin-bottom: 0.25rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 0.55rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 1.2rem 1.5rem 1.5rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    footer a {
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .about-grid,
+      .services-grid,
+      .split,
+      .cta,
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cta {
+        padding: 1.5rem 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo-wrap">
+        <!-- Minimal Tech Spark SVG Logo -->
+        <svg class="logo-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <defs>
+            <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0b5fff" />
+              <stop offset="100%" stop-color="#00c2a8" />
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke="url(#sparkGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4 L18.5 10.5 L25 13 L18.5 15.5 L16 22 L13.5 15.5 L7 13 L13.5 10.5 Z" />
+            <circle cx="16" cy="13" r="2.2" />
+          </g>
+        </svg>
+        <div class="logo-text">Syber<span>Koch</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#enablement">Enablement</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div>
+        <div class="hero-kicker">AI, Cloud & Leadership Consulting</div>
+        <h1 class="hero-title">
+          Clarity for leaders.<br />
+          <span>Momentum for teams.</span>
+        </h1>
+        <p class="hero-subtitle">
+          We help executives, entrepreneurs, and growing businesses communicate with impact, adopt AI and cloud
+          confidently, and build the technical and leadership talent they need for the future.
+        </p>
+        <div class="hero-badges">
+          <div class="badge"><span class="badge-icon">🎤</span>Executive & leadership coaching</div>
+          <div class="badge"><span class="badge-icon">☁️</span>AI & cloud strategy</div>
+          <div class="badge"><span class="badge-icon">🧑‍💻</span>Developer & team enablement</div>
+        </div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Book a discovery call</a>
+          <a href="#services" class="btn-outline">Explore services</a>
+        </div>
+        <div class="hero-note">
+          Based in the Greater Toronto Area · Available for remote and on‑site engagements.
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">Who we work with</div>
+        <ul class="hero-card-list">
+          <li>
+            <span>●</span>
+            <div>Individual executives and leaders preparing for high‑stakes meetings, presentations, and talks.</div>
+          </li>
+          <li>
+            <span>●</span>
+            <div>Entrepreneurs and small businesses navigating AI, cloud, and IT decisions.</div>
+          </li>
+          <li>
+            <span>●</span>
+            <div>Small and medium‑sized companies building modern IT teams and future leaders.</div>
+          </li>
+          <li>
+            <span>●</span>
+            <div>Organizations upskilling developers and non‑technical staff on AI, automation, and modern tools.</div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">Bridging technology, people, and performance</h2>
+        </div>
+        <p class="section-subtitle">
+          We combine deep experience in cloud, AI, and software engineering with hands‑on leadership and coaching to
+          help you move from ideas to execution.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Technology alone doesn’t create impact—clarity, communication, and the right people do. We work with leaders
+            and organizations who want to speak more effectively, make smarter technology decisions, and build teams
+            that can execute with confidence.
+          </p>
+          <p>
+            From executive coaching and AI strategy to developer enablement and workforce development, our work is
+            tailored to your context, your culture, and your goals. No generic slide decks. No buzzword bingo. Just
+            practical, honest guidance and hands‑on support.
+          </p>
+          <div class="about-highlight">
+            We help you translate complex technology into clear decisions, clear communication, and clear next steps—for
+            yourself, your team, and your business.
+          </div>
+        </div>
+
+        <aside class="about-meta">
+          <h4>Focus areas</h4>
+          <ul>
+            <li>Executive and leadership communication coaching</li>
+            <li>AI, cloud, and modern IT strategy for non‑technical and technical leaders</li>
+            <li>Developer training on AI, cloud, CI/CD, automation, and Agile practices</li>
+            <li>Workforce and leadership development for small and medium‑sized businesses</li>
+            <li>Cloud & AI POCs, migration, and modernization initiatives</li>
+          </ul>
+          <div style="margin-top: 0.8rem;">
+            <div class="pill"><span>●</span> Azure & cloud architecture</div>
+            <div class="pill"><span>●</span> AI adoption & enablement</div>
+            <div class="pill"><span>●</span> Public speaking & storytelling</div>
+            <div class="pill"><span>●</span> Team coaching & mentoring</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Services</div>
+          <h2 class="section-title">Advisory, coaching & enablement</h2>
+        </div>
+        <p class="section-subtitle">
+          Designed for executives, entrepreneurs, and growing businesses who want clarity, confidence, and momentum.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- 1. Executive communication & leadership coaching -->
+        <article class="service-card">
+          <div class="service-icon">🎤</div>
+          <div class="service-tag">For executives & leaders</div>
+          <h3 class="service-title">Executive communication & leadership coaching</h3>
+          <p class="service-body">
+            One‑to‑one coaching to help you articulate your ideas clearly, speak with confidence, and lead with impact
+            in any room. We tailor every engagement to your leadership style and goals.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>Preparation for high‑stakes meetings, presentations, and talks.</div></li>
+            <li><span>✓</span><div>Message structuring aligned with your personality and leadership style.</div></li>
+            <li><span>✓</span><div>Storytelling, presence, and audience engagement techniques.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: C‑suite, directors, senior managers, and emerging leaders.
+          </div>
+        </article>
+
+        <!-- 2. Executive training on AI, cloud & IT -->
+        <article class="service-card">
+          <div class="service-icon">📊</div>
+          <div class="service-tag">For leadership teams</div>
+          <h3 class="service-title">AI, cloud & IT awareness for executives</h3>
+          <p class="service-body">
+            Practical, jargon‑free training on the technologies reshaping your business—and what they mean for your
+            strategy, risk, and operations.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>AI fundamentals, opportunities, and limitations.</div></li>
+            <li><span>✓</span><div>Cloud concepts, modernization, and cost‑conscious decision‑making.</div></li>
+            <li><span>✓</span><div>Security, governance, and how to keep your organization safe.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: Executive teams, boards, and business unit leaders.
+          </div>
+        </article>
+
+        <!-- 3. Guidance for entrepreneurs & small businesses -->
+        <article class="service-card">
+          <div class="service-icon">🚀</div>
+          <div class="service-tag">For entrepreneurs & SMBs</div>
+          <h3 class="service-title">AI, cloud & IT guidance for small business</h3>
+          <p class="service-body">
+            Clear, vendor‑neutral guidance to help you choose the right tools, avoid unnecessary complexity, and build a
+            technology foundation that supports growth.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>Assessment of your current tools, workflows, and gaps.</div></li>
+            <li><span>✓</span><div>Recommendations for AI, cloud, and IT solutions that fit your stage and budget.</div></li>
+            <li><span>✓</span><div>Roadmaps that balance quick wins with long‑term scalability.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: Founders, owners, and lean teams.
+          </div>
+        </article>
+
+        <!-- 4. Workforce & leadership development -->
+        <article class="service-card">
+          <div class="service-icon">👥</div>
+          <div class="service-tag">For growing companies</div>
+          <h3 class="service-title">Workforce & leadership development</h3>
+          <p class="service-body">
+            Support for hiring, developing, and retaining the right IT talent and future leaders in your organization.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>Defining the skills and roles you actually need.</div></li>
+            <li><span>✓</span><div>Interview support and evaluation for technical and leadership roles.</div></li>
+            <li><span>✓</span><div>Coaching programs for emerging leaders and high‑potential talent.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: Small and medium‑sized businesses building modern teams.
+          </div>
+        </article>
+
+        <!-- 5. Developer training on AI, cloud & delivery -->
+        <article class="service-card">
+          <div class="service-icon">🧑‍💻</div>
+          <div class="service-tag">For engineering teams</div>
+          <h3 class="service-title">Developer training on AI, cloud & delivery</h3>
+          <p class="service-body">
+            Hands‑on training for your developers on modern AI and cloud technologies, continuous integration, automation,
+            and Agile practices. We help teams work smarter, faster, and more collaboratively.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>Using AI tools to accelerate development safely and effectively.</div></li>
+            <li><span>✓</span><div>Cloud‑native patterns, DevOps, CI/CD, and automation.</div></li>
+            <li><span>✓</span><div>Team workflows that improve quality, speed, and collaboration.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: In‑house dev teams and hybrid vendor teams.
+          </div>
+        </article>
+
+        <!-- 6. AI for non‑technical teams -->
+        <article class="service-card">
+          <div class="service-icon">🧠</div>
+          <div class="service-tag">For non‑technical teams</div>
+          <h3 class="service-title">AI enablement for business users</h3>
+          <p class="service-body">
+            Training for non‑technical staff on how to safely and effectively use AI tools and build low‑ to no‑code
+            solutions.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>Everyday AI use cases in operations, marketing, HR, and more.</div></li>
+            <li><span>✓</span><div>Low‑code / no‑code workflows and automation.</div></li>
+            <li><span>✓</span><div>Policies, guardrails, and best practices for responsible AI use.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: Business teams, operations, HR, and support functions.
+          </div>
+        </article>
+
+        <!-- 7. Cloud & AI POCs, migration & modernization -->
+        <article class="service-card">
+          <div class="service-icon">⚡</div>
+          <div class="service-tag">For transformation initiatives</div>
+          <h3 class="service-title">Cloud & AI POCs, migration & modernization</h3>
+          <p class="service-body">
+            We help you validate ideas quickly, modernize legacy systems, and adopt cloud and AI solutions with
+            confidence—from proof‑of‑concept to scaled rollout.
+          </p>
+          <ul class="service-list">
+            <li><span>✓</span><div>Proof‑of‑concepts (POCs) for AI, cloud, automation, and data solutions.</div></li>
+            <li><span>✓</span><div>Cloud and AI migration planning with cost, security, and scalability in mind.</div></li>
+            <li><span>✓</span><div>Modernization of legacy applications using cloud‑native and AI‑enhanced patterns.</div></li>
+            <li><span>✓</span><div>Vendor‑neutral guidance and access to trusted industry experts.</div></li>
+          </ul>
+          <div class="service-footer">
+            Ideal for: Organizations exploring AI capabilities or modernizing outdated systems.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="enablement">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Enablement</div>
+          <h2 class="section-title">From insight to implementation</h2>
+        </div>
+        <p class="section-subtitle">
+          Whether we’re working one‑to‑one or with a full team, the goal is the same: real change in how you work.
+        </p>
+      </div>
+
+      <div class="split">
+        <div>
+          <ul class="list-checks">
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>Tailored engagements.</strong> Every session, workshop, or program is designed around your
+                context, not a generic template. We meet you where you are.
+              </div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>Actionable outcomes.</strong> You leave with clear next steps—scripts, checklists,
+                workflows, and frameworks your team can reuse immediately.
+              </div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>Technical and human.</strong> We address both the tools and the people using them: skills,
+                communication, and culture.
+              </div>
+            </li>
+            <li>
+              <span>✓</span>
+              <div>
+                <strong>Flexible formats.</strong> Remote or on‑site, one‑off sessions or ongoing programs, individual or
+                team‑based.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="panel">
+          <h4>Example engagement types</h4>
+          <ul>
+            <li>Executive coaching package (4–12 sessions)</li>
+            <li>AI & cloud strategy workshop for leadership teams</li>
+            <li>Developer enablement sprint (AI tools, CI/CD, automation)</li>
+            <li>AI for non‑technical teams training series</li>
+            <li>SMB technology roadmap and workforce planning</li>
+            <li>Cloud & AI POC and modernization roadmap</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta">
+        <div>
+          <h3>Ready to explore what’s possible?</h3>
+          <p>
+            Whether you're preparing for a critical presentation, planning your AI and cloud strategy, or building the
+            next generation of leaders and developers, we can design an engagement that fits your goals and constraints.
+          </p>
+          <div class="cta-actions">
+            <a href="#contact" class="btn-primary">Schedule a 30‑minute call</a>
+            <div class="cta-meta">
+              <strong>No obligation.</strong> Just a conversation to understand your context and explore options.
+            </div>
+          </div>
+        </div>
+        <div class="cta-meta">
+          <strong>Typical clients:</strong><br />
+          Executives and founders · Small and medium‑sized businesses · IT and engineering leaders · HR and people
+          leaders
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let’s start the conversation</h2>
+        </div>
+        <p class="section-subtitle">
+          Share a bit about your role, your organization, and what you’d like to achieve. We’ll follow up with next
+          steps.
+        </p>
+      </div>
+
+      <div class="contact">
+        <div class="contact-info">
+          <p>
+            You can reach out directly by email or use the form to request a call. We typically respond within one
+            business day.
+          </p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:hello@syberkoch.com">hello@syberkoch.com</a></li>
+            <li><strong>Location:</strong> Greater Toronto Area · Serving clients globally (remote)</li>
+            <li>
+              <strong>LinkedIn:</strong>
+              <a href="https://www.linkedin.com" target="_blank" rel="noopener">Connect on LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formspree example – replace YOUR_FORM_ID with your actual ID -->
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+        >
+          <h4>Send a message</h4>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="role">Role & organization</label>
+            <input id="role" name="role" type="text" placeholder="e.g., VP Engineering, GrowthCo" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="_replyto" type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="topic">What would you like to explore?</label>
+            <textarea
+              id="topic"
+              name="message"
+              rows="4"
+              placeholder="Briefly describe your goals, challenges, or upcoming initiatives."
+              required
+            ></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New inquiry from SyberKoch website" />
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+            Submit
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    ©
+    <script>
+      document.write(new Date().getFullYear());
+    </script>
+    SyberKoch. All rights reserved. · Built for GitHub Pages.
+  </footer>
+</body>
+</html>
