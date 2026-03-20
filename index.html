@@ -1034,81 +1034,64 @@
             </li>
           </ul>
         </div>
+          <form id="contactForm" class="contact-form">
+            <h4>Send a message</h4>
 
-        <!-- Formspree example – replace YOUR_FORM_ID with your actual ID -->
-        <!-- Add this in your <head> or before </body>: reCAPTCHA script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required />
+            </div>
 
-<form id="contactForm" class="contact-form">
-  <h4>Send a message</h4>
-  <div class="field">
-    <label for="name">Name</label>
-    <input id="name" name="name" type="text" placeholder="Your name" required />
-  </div>
-  <div class="field">
-    <label for="role">Role & organization</label>
-    <input id="role" name="role" type="text" placeholder="e.g., VP Engineering, GrowthCo" />
-  </div>
-  <div class="field">
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" placeholder="you@company.com" required />
-  </div>
-  <div class="field">
-    <label for="topic">What would you like to explore?</label>
-    <textarea
-      id="topic"
-      name="message"
-      rows="4"
-      placeholder="Briefly describe your goals, challenges, or upcoming initiatives."
-      required
-    ></textarea>
-  </div>
+            <div class="field">
+              <label for="role">Role & organization</label>
+              <input id="role" name="role" type="text" />
+            </div>
 
-  <!-- reCAPTCHA widget -->
-  <div
-    class="g-recaptcha"
-    data-sitekey="6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24"
-    style="margin-bottom: 0.8rem;"
-  ></div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+            </div>
 
-  <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-    Submit
-  </button>
-</form>
+            <div class="field">
+              <label for="topic">What would you like to explore?</label>
+              <textarea id="topic" name="message" rows="4" required></textarea>
+            </div>
 
-<script>
-  const form = document.getElementById('contactForm');
+            <button type="submit" class="btn-primary" style="width:100%">Submit</button>
+          </form>
 
-  form.addEventListener('submit', function (e) {
+          <!-- Load reCAPTCHA v3 -->
+          <script src="https://www.google.com/recaptcha/api.js?render=6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24"></script>
+          <script>
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const recaptchaToken = grecaptcha.getResponse();
-    if (!recaptchaToken) {
-      alert('Please complete the reCAPTCHA.');
-      return;
-    }
+    grecaptcha.ready(function () {
+      grecaptcha.execute("YOUR_SITE_KEY", { action: "submit" }).then(function (token) {
 
-    const data = {
-      name: document.getElementById('name').value,
-      role: document.getElementById('role').value,
-      email: document.getElementById('email').value,
-      message: document.getElementById('topic').value,
-      recaptchaToken: recaptchaToken
-    };
+        const data = {
+          name: document.getElementById("name").value,
+          role: document.getElementById("role").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("topic").value,
+          recaptchaToken: token
+        };
 
-    fetch('https://script.google.com/macros/s/AKfycbwDyxzTWYAWjuABZD6GyoXrF47ZadmjSfCI40ZMtega_JtFErg3q2pGPHAKZBi4rnVUfQ/exec', {
-      method: 'POST',
-      mode: 'no-cors', // or remove if you configure CORS properly
-      body: JSON.stringify(data)
-    })
-      .then(() => {
-        alert('Thank you! Your message has been sent.');
-        form.reset();
-        grecaptcha.reset();
-      })
-      .catch(() => {
-        alert('There was an error submitting the form. Please try again.');
+        fetch("6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24", {
+          method: "POST",
+          body: JSON.stringify(data)
+        })
+          .then(() => {
+            alert("Thank you! Your message has been sent.");
+            form.reset();
+          })
+          .catch(() => {
+            alert("There was an error submitting the form.");
+          });
       });
+    });
   });
 </script>
       </div>
