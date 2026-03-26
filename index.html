@@ -1079,8 +1079,11 @@
           recaptchaToken: token
         };
 
-        fetch("https://script.google.com/macros/s/AKfycbzR9pexAYF7pRU11mQJFhVHZ6CDnzrgCcLPgdKkFS-iZpcKp4tktMqHjpjsMXgA-_H-/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbwF5C7OEvHPU4nns3cw8mHQU4sGe9WuUNeAGdP4ifZlGHRng868nxdqXbQKelx9qLQ9/exec", {
           method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
           body: JSON.stringify(data)
         })
           .then(() => {
