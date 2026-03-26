@@ -1034,35 +1034,34 @@
             </li>
           </ul>
         </div>
-          <form id="contactForm" class="contact-form">
-            <h4>Send a message</h4>
+         <form id="contactForm" class="contact-form">
+  <h4>Send a message</h4>
 
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
-            </div>
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required />
+  </div>
 
-            <div class="field">
-              <label for="role">Role & organization</label>
-              <input id="role" name="role" type="text" />
-            </div>
+  <div class="field">
+    <label for="role">Role & organization</label>
+    <input id="role" name="role" type="text" />
+  </div>
 
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required />
-            </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required />
+  </div>
 
-            <div class="field">
-              <label for="topic">What would you like to explore?</label>
-              <textarea id="topic" name="message" rows="4" required></textarea>
-            </div>
+  <div class="field">
+    <label for="topic">What would you like to explore?</label>
+    <textarea id="topic" name="message" rows="4" required></textarea>
+  </div>
 
-            <button type="submit" class="btn-primary" style="width:100%">Submit</button>
-          </form>
-
-          
-          <script src="https://www.google.com/recaptcha/api.js?render=6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24"></script>
-          <script>
+  <button type="submit" class="btn-primary" style="width:100%">Submit</button>
+</form>
+         
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24"></script>
+<script>
   const form = document.getElementById("contactForm");
 
   form.addEventListener("submit", function (e) {
@@ -1070,25 +1069,28 @@
 
     grecaptcha.ready(function () {
       grecaptcha.execute("6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24", { action: "submit" }).then(function (token) {
+        const formData = new FormData();
+        formData.append("name", document.getElementById("name").value);
+        formData.append("role", document.getElementById("role").value);
+        formData.append("email", document.getElementById("email").value);
+        formData.append("message", document.getElementById("topic").value);
+        formData.append("recaptchaToken", token);
 
-        const data = {
-          name: document.getElementById("name").value,
-          role: document.getElementById("role").value,
-          email: document.getElementById("email").value,
-          message: document.getElementById("topic").value,
-          recaptchaToken: token
-        };
 
         fetch("https://script.google.com/macros/s/AKfycbyqh9UnZ7ciLdpErPh7DiXHzrq_Qtc--xJa4PXRscxCvKtg_cyTTRX2ZLZEIC66WadP/exec", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
+          body: formData
         })
-          .then(() => {
-            alert("Thank you! Your message has been sent.");
-            form.reset();
+          .then(response => response.json())
+          .then(result => {
+            if (result.status === "success") {
+              alert("Thank you! Your message has been sent.");
+              form.reset();
+            } else if (result.status === "recaptcha_failed") {
+              alert("reCAPTCHA failed. Please try again.");
+            } else {
+              alert("There was an error submitting the form.");
+            }
           })
           .catch(() => {
             alert("There was an error submitting the form.");
@@ -1097,6 +1099,7 @@
     });
   });
 </script>
+
       </div>
     </section>
   </main>
