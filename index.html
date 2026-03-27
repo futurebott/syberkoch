@@ -1026,7 +1026,6 @@
             business day.
           </p>
           <ul class="contact-list">
-            <li><strong>Email to consultant:</strong> <a href="mailto:rablkhan1@outlook.com">rablkhan1@outlook.com</a></li>
             <li><strong>Location:</strong> Greater Toronto Area · Serving clients globally (remote)</li>
             <li>
               <strong>LinkedIn:</strong>
@@ -1034,72 +1033,7 @@
             </li>
           </ul>
         </div>
-         <form id="contactForm" class="contact-form">
-  <h4>Send a message</h4>
-
-  <div class="field">
-    <label for="name">Name</label>
-    <input id="name" name="name" type="text" required />
-  </div>
-
-  <div class="field">
-    <label for="role">Role & organization</label>
-    <input id="role" name="role" type="text" />
-  </div>
-
-  <div class="field">
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required />
-  </div>
-
-  <div class="field">
-    <label for="topic">What would you like to explore?</label>
-    <textarea id="topic" name="message" rows="4" required></textarea>
-  </div>
-
-  <button type="submit" class="btn-primary" style="width:100%">Submit</button>
-</form>
          
-<script src="https://www.google.com/recaptcha/api.js?render=6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24"></script>
-<script>
-  const form = document.getElementById("contactForm");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    grecaptcha.ready(function () {
-      grecaptcha.execute("6Lc2epEsAAAAAP09HVbfDaKcPZnQBw5ZkF9_Il24", { action: "submit" }).then(function (token) {
-        const formData = new FormData();
-        formData.append("name", document.getElementById("name").value);
-        formData.append("role", document.getElementById("role").value);
-        formData.append("email", document.getElementById("email").value);
-        formData.append("message", document.getElementById("topic").value);
-        formData.append("recaptchaToken", token);
-
-
-        fetch("https://script.google.com/macros/s/AKfycbzjxPjTPvgjSNjxQIpLtgTBGbAPAL9eICIkZQsxv7-DwO6x9irA9t0iIxXUbfp0Ofk-/exec", {
-          method: "POST",
-          body: formData
-        })
-          .then(response => response.json())
-          .then(result => {
-            if (result.status === "success") {
-              alert("Thank you! Your message has been sent.");
-              form.reset();
-            } else if (result.status === "recaptcha_failed") {
-              alert("reCAPTCHA failed. Please try again.");
-            } else {
-              alert("There was an error submitting the form.");
-            }
-          })
-          .catch(() => {
-            alert("There was an error submitting the form.");
-          });
-      });
-    });
-  });
-</script>
-
       </div>
     </section>
   </main>
@@ -1109,6 +1043,48 @@
     <script>
       document.write(new Date().getFullYear());
     </script>
+    <!-- Read the Formbutton docs at formspree.io/formbutton/docs. See more examples at codepen.io/formspree -->
+<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+<script>
+  /* paste this line in verbatim */
+  window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
+  /* customize formbutton below*/     
+  formbutton("create", {
+    action: "https://formspree.io/f/mnjojjok",
+    title: "How can we help?",
+    fields: [
+       { 
+        type: "text", 
+        label: "Name:", 
+        name: "Name",
+        required: true,
+        placeholder: "Your name"
+      },
+      { 
+        type: "email", 
+        label: "Email:", 
+        name: "email",
+        required: true,
+        placeholder: "your@email.com"
+      },
+      {
+        type: "textarea",
+        label: "Message:",
+        name: "message",
+        placeholder: "Short description of your challenge?",
+      },
+      { type: "submit" }      
+    ],
+    styles: {
+      title: {
+        backgroundColor: "gray"
+      },
+      button: {
+        backgroundColor: "gray"
+      }
+    }
+  });
+</script>
     SyberKoch. All rights reserved. · Built for GitHub Pages.
   </footer>
 </body>
